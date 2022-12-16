@@ -55,13 +55,13 @@ const CountriesTable = ({ countries }: OwnProps) => {
                         {country.guerisons}
                     </td>
                     <td className="py-4 px-6 text-sm">
-                        {country.tauxDeces}
+                        {isNaN(country.tauxDeces) ? 0 : country.tauxDeces}
                     </td>
                     <td className="py-4 px-6 text-sm">
-                        {country.tauxGuerison}
+                        {isNaN(country.tauxGuerison) ? 0 : country.tauxGuerison}
                     </td>
                     <td className="py-4 px-6 text-sm">
-                        {country.tauxInfecte}
+                        {isNaN(country.tauxInfecte) ? 0 : country.tauxInfecte}
                     </td>
                 </tr>
             ))}

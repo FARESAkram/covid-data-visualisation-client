@@ -1,24 +1,34 @@
 import { useState } from "react";
 
+
+
 const NavBar = () => {
+    const TITLE = "Covid Data Visualizer";
     const [dark , setDark] = useState(true);
+    const [openMenu, setOpenMenu] = useState(false);
     const handleClick = () => {
         document.getElementsByTagName("html")[0].classList.toggle("dark");
         setDark(!dark);
     };
+    const handleMenu = () => {
+        setOpenMenu(!openMenu);
+    };
     return (
-        <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
-            <div className="container flex flex-wrap items-center justify-between mx-auto">
-                <a href="https://flowbite.com/" className="flex items-center">
-                    <img src="https://www.apsf.org/wp-content/uploads/newsletters/2020/3502/coronavirus-covid-19.png" className="h-6 mr-3 sm:h-9 rounded-full" alt="Flowbite Logo" />
-                    <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Covid Visualiser</span>
-                </a>
-                <button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-                    <span className="sr-only">Open main menu</span>
-                    <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+        <nav className="bg-white mb-2 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+            <div className="container flex flex-wrap justify-between items-center mx-auto">
+                <button className="flex items-center">
+                    <img src="https://www.apsf.org/wp-content/uploads/newsletters/2020/3502/coronavirus-covid-19.png" className="mr-3 h-6 sm:h-9" alt="React Logo" />
+                    <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">{TITLE}<sub className="text-xs font-thin align-baseline ml-2">stay safe</sub></span>
                 </button>
-                <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-                    <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <button onClick={handleMenu} data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+                    <span className="sr-only">Open main menu</span>
+                    <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd">
+                        </path>
+                    </svg>
+                </button>
+                <div className={`${openMenu ? "" : "hidden"} w-full md:block md:w-auto`} id="navbar-default">
+                    <ul className="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         <li>
                             <label htmlFor="checked-toggle" className="inline-flex relative items-center cursor-pointer">
                                 <input type="checkbox" value="" id="checked-toggle" className="sr-only peer" checked={dark} readOnly />
@@ -37,4 +47,4 @@ const NavBar = () => {
     )
 }
 
-export default NavBar
+export default NavBar;
