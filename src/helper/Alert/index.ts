@@ -21,7 +21,7 @@ export const errorAlert = async (message: string) => {
         title: 'Oops...',
         text: first,
         // select the countries that are available with options from countries array
-        footer: countries.length > 0 ? '<select id="countries" class="form-control"><option value="0">Select a country</option>' + countries.map((country) => `<option value="${country}">${country}</option>`).join('') + '</select>' : ""
+        footer: countries.length > 0 ? '<select id="countries" class="form-control"><option value="0">Select a country</option>' + countries.sort((a,b)=>a.localeCompare(b)).map((country) => `<option value="${country}">${country}</option>`).join('') + '</select>' : ""
 
         }).then((result) => {
         if (result.isConfirmed && countries.length > 0) {
